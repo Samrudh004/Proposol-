@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Samrudh's Proposal ❤️</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>❤️</text></svg>">  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #fff;
+      text-shadow: 0 0 10px #fff, 0 0 30px #ff0080;
+      margin-bottom: 10px;
+      animation: glowText 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #fff, 0 0 30px #ff0080; }
+      to { text-shadow: 0 0 25px #fff, 0 0 50px #ff80bf; }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ffe6f2;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .btns {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background: linear-gradient(90deg, #ff6a88, #ff99ac);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 0, 100, 0.4);
+    }
+    #yesBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 0, 150, 0.6);
+    }
+
+    #noBtn {
+      background: linear-gradient(90deg, #93a5cf, #e4efe9);
+      color: #333;
+      position: relative;
+      animation: flicker 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateY(-6px); }
+      50% { transform: translateY(8px); }
+      100% { transform: translateY(-4px); }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      font-size: 24px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-100vh) scale(1.8); opacity: 0; }
+    }
+
+    .hidden { display: none; }
+
+  </style>
+</head>
+<body>
+  <h1>Will You Be Mine Forever? 💖</h1>
+  <p>Be honest... but careful when you say no 😉</p>
+  <div class="btns">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    let isMoving = false;
+
+    // Make the 'No' button flicker and move away when hovered
+    noBtn.addEventListener('mouseover', () => {
+      if (isMoving) return;
+      isMoving = true;
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+      setTimeout(() => isMoving = false, 300);
+    });
+
+    // On clicking Yes — beautiful animation + love message
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = `<h1 style=\"font-size:3rem;color:#fff;text-align:center;\">I LOVE YOU 💕</h1><p style='color:#fff;font-size:1.5rem;'>From Samrudh with love ❤️</p>`;
+      for (let i = 0; i < 80; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    });
+  </script>
+</body>
+</html>
